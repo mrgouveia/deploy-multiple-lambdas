@@ -18,7 +18,7 @@ jobs:
           aws-region: us-east-1
       - run: pwd
       - run: ls -la
-      - run: zip -j lambda1.zip ./lambda1/index.js
+      - run: zip -j lambda1.zip src/lambda1/index.js
       - run: aws lambda update-function-code --function-name=lambda1 --zip-file=fileb://lambda1.zip
  
   lambda2:
