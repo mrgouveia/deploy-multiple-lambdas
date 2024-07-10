@@ -1,8 +1,8 @@
-name: Deploying multiple Lambdas
+name: Deploying multiple Lambdas [each lambda have its own job] #cons: as the project grows up, each lambda has a job
 on:
   push:
     branches:
-      - main
+      - mainnnnnn #fix name here
 jobs:
   lambda1:
     runs-on: ubuntu-latest
