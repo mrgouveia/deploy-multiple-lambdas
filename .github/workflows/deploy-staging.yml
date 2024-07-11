@@ -1,0 +1,12 @@
+name: Deploy Functions in Staging environment
+ 
+on:
+  push:
+    branches: [develop]
+ 
+jobs:
+  call-update-function:
+    uses: ./.github/workflows/reusable-deploy-matrix.yml
+    with:
+      environment: develop
+    secrets: inherit

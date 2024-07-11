@@ -2,7 +2,7 @@ name: Deploying multiple Lambdas with matrix strategy [each lambda use the same 
 on:
   push:
     branches:
-      - main #fix name here
+      - mainnnnn #fix name here
 jobs:
   lambdas:
     strategy:
