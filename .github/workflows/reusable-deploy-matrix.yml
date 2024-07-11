@@ -17,9 +17,14 @@ jobs:
       - name: Get functions filenames
         id: getLambdas
         run: |
+          pwd
+          ls
           lambdas=$(tree -d -L 1 -J . | jq -j -c '.[0].contents | map(.name)')
-          echo ::set-output name=lambdas::${lambdas}
+          echo "lambdas=${lambdas}" >> $GITHUB_OUTPUT
           echo ${lambdas}
+          lambdas2=$(tree -d -L 1 -J)
+          echo "lambdas2=${lambdas2}" >> $GITHUB_OUTPUT
+          echo ${lambdas2}
   update-code:
     needs: get-filenames
     strategy:
