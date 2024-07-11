@@ -6,6 +6,11 @@ on:
       environment:
         required: true
         type: string
+      lambdas_base_path:
+        description: the base path to find the lambdas folders
+        default: "./src/"
+        type: string
+
 jobs:
   get-filenames:
     runs-on: ubuntu-latest
@@ -17,12 +22,11 @@ jobs:
       - name: Get functions filenames
         id: getLambdas
         run: |
-          pwd
-          ls
-          lambdas=$(tree ./src/ -d -L 1 -J . | jq -j -c '.[0].contents | map(.name)')
+          # the "./src/" is the base path to find the folders with lambdas names
+          lambdas=$(tree ${{inputs.lambdas_base_path}} -d -L 1 -J . | jq -j -c '.[0].contents | map(.name)')
           echo "lambdas=${lambdas}" >> $GITHUB_OUTPUT
           echo ${lambdas}
-          lambdas2=$(tree ./src/ -d -L 1 -J)
+          lambdas2=$(tree ${{inputs.lambdas_base_path}} -d -L 1 -J)
           #echo "lambdas2=${lambdas2}" >> $GITHUB_OUTPUT
           echo ${lambdas2}
   update-code:

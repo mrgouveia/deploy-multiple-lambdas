@@ -9,4 +9,5 @@ jobs:
     uses: ./.github/workflows/reusable-deploy-matrix.yml
     with:
       environment: main
+      lambdas_base_path: "./src/"
     secrets: inherit
