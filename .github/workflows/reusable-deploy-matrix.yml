@@ -19,10 +19,10 @@ jobs:
         run: |
           pwd
           ls
-          lambdas=$(tree -d -L 2 -J . | jq -j -c '.[0].contents | map(.name)')
+          lambdas=$(tree ./src/ -d -L 1 -J . | jq -j -c '.[0].contents | map(.name)')
           echo "lambdas=${lambdas}" >> $GITHUB_OUTPUT
           echo ${lambdas}
-          lambdas2=$(tree -d -L 2 -J)
+          lambdas2=$(tree ./src/ -d -L 1 -J)
           #echo "lambdas2=${lambdas2}" >> $GITHUB_OUTPUT
           echo ${lambdas2}
   update-code:
